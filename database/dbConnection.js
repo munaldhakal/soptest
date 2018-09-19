@@ -11,4 +11,6 @@ const mongoose = require('mongoose').connect(envConfig.db.url, { useNewUrlParser
     debug('Unable to connect to database');
 });
 
+mongoose.Promise = global.Promise;
+
 module.exports = mongoose;

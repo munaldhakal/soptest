@@ -1,5 +1,6 @@
 const cors = (req, res, next) => {
     var originHeaders = req.get("origin");
+    res.setHeader("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Origin", originHeaders);
 	res.header("Access-Control-Allow-Headers",
 				"Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization");

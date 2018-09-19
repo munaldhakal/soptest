@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
+const router = express.Router();
 
-//middleware setup
-require('../middleware/middleware')(app);
-//route setup
-app.get('/', (req, res) => {
-    res.send('HelloWorld');
-  });
-require('../routes/routes')(app);
-module.exports = app;
+//Middleware setup
+//const middleware = require('../middleware/middleware');
+//app.use(middleware);
+//Use Routes
+const routes = require('../routes/routes');
+router.use('/',routes);
+
+module.exports = {
+  router,app
+};

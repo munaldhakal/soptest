@@ -1,5 +1,6 @@
 const Room = require('../models/room');
 const debug = require('debug')('app');
+const mongoose = require('mongoose');
 
 exports.roomList = (req, res) => {
     Room.find()
@@ -16,14 +17,15 @@ exports.roomList = (req, res) => {
       });
   };
   
-exports.createRoom = (req, res) => {
-    debug("Inside POST");
+exports.createRoom = (req, res, next) => {
+    debug("Inside POST-----****--====**>>>>>"+req.body+"-->>>>>>.."+req.json);
     const room = new Room({
       _id: new mongoose.Types.ObjectId(),
       title: req.body.title,
+      shortDescription: req.body.shortDescription,
       description: req.body.description,
       location: req.body.location,
-      weeklypayement: req.body.weeklypayement,
+      weeklyPayement: req.body.weeklyPayement,
       contact: req.body.contact
     });
     room.save()
